@@ -1,0 +1,23 @@
+---
+import PostLayout from '~/components/layout/post-layout.astro';
+import { getPostsCollection } from '~/lib/mdx';
+
+export async function getStaticPaths() {
+  const posts = await getPostsCollection();
+
+  return posts.map((post, i) => {
+    return {
+      params: { slug: post.slug },
+      props: {
+        post,
+        prevPost: posts[i + 1],
+        nextPost: posts[i - 1],
+      },
+    };
+  });
+}
+
+type Props = Awaited<ReturnType<typeof getStaticPaths>>[number]['props'];
+---
+
+<PostLayout {...Astro.props} />

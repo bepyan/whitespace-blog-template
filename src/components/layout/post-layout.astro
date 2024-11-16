@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '~/components/layout/base-layout.astro';
+import BaseNav from '~/components/layout/base-nav.astro';
+
+type Props = {
+  post: CollectionEntry<'posts'>;
+};
+
+const { post } = Astro.props;
+
+const { Content } = await post.render();
+---
+
+<BaseLayout>
+  <article class="mdx">
+    <Content />
+  </article>
+</BaseLayout>

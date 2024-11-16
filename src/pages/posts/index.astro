@@ -1,0 +1,24 @@
+---
+import BaseLayout from '~/components/layout/base-layout.astro';
+import { getPostsCollection } from '~/lib/mdx';
+
+const posts = await getPostsCollection();
+---
+
+<BaseLayout>
+  <h1>Post List Page</h1>
+  <div class="my-10">
+    {
+      posts.map((post) => (
+        <ul>
+          <li class="ml-10">
+            <a href={`/posts/${post.slug}`}>- {post.data.title}</a>
+          </li>
+        </ul>
+      ))
+    }
+  </div>
+  <div class="text-xs">
+    {JSON.stringify(posts, null, 2)}
+  </div>
+</BaseLayout>

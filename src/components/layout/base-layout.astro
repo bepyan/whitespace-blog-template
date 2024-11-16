@@ -1,0 +1,27 @@
+---
+import BaseHead from '~/components/layout/base-head.astro';
+import BaseNav from '~/components/layout/base-nav.astro';
+import type { SEO } from '~/lib/types';
+import { SITE } from '~/site.config';
+
+type Props = {
+  seo?: SEO;
+};
+
+const { seo, ...props } = Astro.props;
+---
+
+<html lang={SITE.lang}>
+  <head>
+    <BaseHead {seo} />
+  </head>
+  <body>
+    <div class="blur-layer" aria-hidden="true"></div>
+    <div class="container">
+      <main {...props}>
+        <BaseNav />
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>

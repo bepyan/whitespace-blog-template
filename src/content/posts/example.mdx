@@ -1,0 +1,103 @@
+---
+title: 'example'
+description: 'example of using markdown in this blog'
+date: 2024-11-16 16:19:26
+updatedDate: 2024-11-16 16:19:26
+draft: false
+---
+
+# Heading 1
+
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
+##### Heading 5
+
+## Basic Formatting
+
+**two asterisks** or **two underscores**.
+_single asterisk_ or a _single underscore_
+**_bold and italic_**
+~~two tildes~~
+
+- First item
+- Second item
+- Third item
+  1. Indented item
+  1. Indented item
+- Fourth item
+
+- [x] Write the press release
+- [ ] Update the website
+  - [x] Create a new page
+  - [ ] Update the homepage
+
+---
+
+## Link
+
+[Semantic description](https://roneo.org/markdown)
+[I'm a link][Reference text]
+
+[This link] will do the same as well. It works as the identifier itself.
+[reference text]: https://jamstack.club
+[this link]: https://roneo.org/markdown
+
+[Random text][random-identifier].
+Hover the mouse over it to see the title.
+Several syntaxes are accepted:
+[One](https://eff.org 'First site')
+[Two](https://example.com 'Second site')
+[Three](https://example.com 'Third site')
+
+[random-identifier]: https://roneo.org/markdown 'This example has a title'
+
+I love supporting the **[EFF](https://eff.org)**.
+This is the _[Markdown Guide](https://www.markdownguide.org)_.
+
+See the section on [`code`](#code).
+
+## Blockquotes
+
+> First level
+>
+> > Second level
+
+> **Markdown** can be used _inside quotes_
+>
+> 1.  This is the first list item.
+> 1.  This is the second list item.
+>
+> ~~strikethrough~~
+>
+> Here's some example code:
+>
+>     return shell_exec("echo $input | $markdown_script");
+
+## Code formatting
+
+```js
+// comment
+console.log('123');
+```
+
+## Images
+
+![https image](https://placehold.co/600x400 'image with title title')
+
+## Tables
+
+| Syntax    | Description |
+| --------- | ----------- |
+| Header    | Title       |
+| Paragraph | Text        |
+
+-Text alignment in tables-
+
+| Syntax    | Description |   Test Text |
+| :-------- | :---------: | ----------: |
+| Header    |    Title    | Here's this |
+| Paragraph |    Text     |    And more |
