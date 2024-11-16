@@ -223,4 +223,11 @@
   position: relative;
 }
 
+/* @see https://shiki.style/guide/dual-themes#class-based-dark-mode */
+.dark .astro-code,
+.dark .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
 /* ---- ---- */

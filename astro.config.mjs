@@ -8,5 +8,15 @@ import { SITE } from './src/site.config';
 export default defineConfig({
   site: SITE.domain,
   output: 'static',
-  integrations: [mdx(), tailwind()],
+  integrations: [
+    tailwind(),
+    mdx({
+      shikiConfig: {
+        themes: {
+          light: 'kanagawa-wave',
+          dark: 'kanagawa-dragon',
+        },
+      },
+    }),
+  ],
 });
