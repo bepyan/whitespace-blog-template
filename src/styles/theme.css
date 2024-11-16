@@ -1,12 +1,13 @@
 /* ---- layout ---- */
 :root {
-  --font-sans: 'Pretendard Variable';
-  --font-serif: 'DM Serif Display';
-  --font-mono: 'Source Code Pro';
+  --font-sans: 'Source Sans Pro';
+  --font-serif: 'Source Serif Pro';
+  --font-mono: 'Source Code Pro Variable';
+  --font-display: 'DM Serif Display';
 
-  --font-wight-normal: 400;
-  --font-wight-semibold: 600;
-  --font-wight-bold: 700;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 
   --spacing-page-w: 700px;
   --spacing-page-y: 128px;

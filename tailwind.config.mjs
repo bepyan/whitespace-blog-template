@@ -9,6 +9,7 @@ export default {
       sans: ['var(--font-sans)', 'sans'],
       serif: ['var(--font-serif)', 'sans-serif'],
       mono: ['var(--font-mono)', 'monospace'],
+      display: ['var(--font-display)', 'sans-serif'],
     },
     fontWeight: {
       normal: 'var(--font-weight-normal)',

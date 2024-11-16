@@ -17,7 +17,7 @@
 }
 
 .mdx > :where(h1, h2, h3, h4) {
-  font-weight: var(--font-wight-bold);
+  font-weight: var(--font-weight-bold);
   scroll-margin-top: var(--spacing-page-y);
 }
 
@@ -193,7 +193,7 @@
   position: relative;
   padding: 0px;
   font-size: 0.9rem;
-  font-weight: var(--font-wight-bold);
+  font-weight: var(--font-weight-bold);
   color: var(--c-text-1);
   border-radius: 6px;
 }
