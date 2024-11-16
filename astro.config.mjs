@@ -1,6 +1,14 @@
 // @ts-check
 import mdx from '@astrojs/mdx';
 import tailwind from '@astrojs/tailwind';
+import {
+  transformerMetaHighlight,
+  transformerMetaWordHighlight,
+  transformerNotationDiff,
+  transformerNotationErrorLevel,
+  transformerNotationFocus,
+  transformerNotationHighlight,
+} from '@shikijs/transformers';
 import { defineConfig } from 'astro/config';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
@@ -21,6 +29,14 @@ export default defineConfig({
           light: 'kanagawa-wave',
           dark: 'kanagawa-dragon',
         },
+        transformers: [
+          transformerNotationHighlight(),
+          transformerNotationDiff(),
+          transformerNotationFocus(),
+          transformerNotationErrorLevel(),
+          transformerMetaHighlight(),
+          transformerMetaWordHighlight(),
+        ],
       },
       remarkPlugins: [remarkBreaks],
       rehypePlugins: [

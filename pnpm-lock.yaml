@@ -36,6 +36,9 @@ importers:
       '@astrojs/tailwind':
         specifier: ^5.1.2
         version: 5.1.2(astro@4.16.13(lightningcss@1.28.1)(rollup@4.27.2)(sass@1.81.0)(typescript@5.6.3))(tailwindcss@3.4.15)
+      '@shikijs/transformers':
+        specifier: ^1.23.0
+        version: 1.23.0
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -707,6 +710,9 @@ packages:
 
   '@shikijs/engine-oniguruma@1.23.0':
     resolution: {integrity: sha512-gS8bZLqVvmZXX+E5JUMJICsBp+kx6gj79MH/UEpKHKIqnUzppgbmEn6zLa6mB5D+sHse2gFei3YYJxQe1EzZXQ==}
+
+  '@shikijs/transformers@1.23.0':
+    resolution: {integrity: sha512-YzQN+m8nXNZjI7ZRk+8IdFa13qiOqIqjcm4jIQ31RzgMoHtpd9Ruma1hssnt2ETH3ixr8HEh+0zAuB9w/OBfnw==}
 
   '@shikijs/types@1.23.0':
     resolution: {integrity: sha512-HiwzsihRao+IbPk7FER/EQT/D0dEEK3n5LAtHDzL5iRT+JMblA7y9uitUnjEnHeLkKigNM+ZplrP7MuEyyc5kA==}
@@ -3199,6 +3205,10 @@ snapshots:
     dependencies:
       '@shikijs/types': 1.23.0
       '@shikijs/vscode-textmate': 9.3.0
+
+  '@shikijs/transformers@1.23.0':
+    dependencies:
+      shiki: 1.23.0
 
   '@shikijs/types@1.23.0':
     dependencies:

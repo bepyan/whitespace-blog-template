@@ -222,6 +222,72 @@
   position: relative;
 }
 
+/* ---- shiki  ---- */
+:root {
+  --vp-code-line-highlight-color: var(--c-gray-soft);
+  --vp-code-line-diff-add-color: var(--c-green-soft);
+  --vp-code-line-diff-add-symbol-color: var(--c-green-1);
+  --vp-code-line-diff-remove-color: var(--c-red-soft);
+  --vp-code-line-warning-color: var(--c-yellow-soft);
+  --vp-code-line-diff-remove-symbol-color: var(--c-red-1);
+  --vp-code-line-error-color: var(--c-red-soft);
+}
+
+.astro-code .highlighted,
+.astro-code .diff {
+  display: inline-block;
+  width: calc(100% + 2 * var(--pre-px));
+  padding: 0 var(--pre-px);
+  margin: 0 calc(-1 * var(--pre-px));
+  transition: background-color 0.5s;
+}
+.astro-code .highlighted {
+  background-color: var(--selection);
+}
+.astro-code .highlighted.error {
+  background-color: var(--vp-code-line-error-color);
+}
+.astro-code .highlighted.warning {
+  background-color: var(--vp-code-line-warning-color);
+}
+.astro-code .diff:before {
+  position: absolute;
+  left: -16px;
+  user-select: none;
+}
+.astro-code .diff.remove {
+  background-color: var(--vp-code-line-diff-remove-color);
+  opacity: 0.7;
+}
+.astro-code .diff.remove:before {
+  color: var(--vp-code-line-diff-remove-symbol-color);
+  content: '-';
+}
+.astro-code .diff.add {
+  background-color: var(--vp-code-line-diff-add-color);
+}
+.astro-code .diff.add:before {
+  color: var(--vp-code-line-diff-add-symbol-color);
+  content: '+';
+}
+
+.astro-code.has-focused .line:not(.focused) {
+  opacity: 0.4;
+  transition: opacity 350ms;
+}
+.astro-code.has-focused:hover .line:not(.has-focus) {
+  filter: blur(0);
+  opacity: 1;
+}
+
+.astro-code .highlighted-word {
+  padding: 1px 3px;
+  margin: -1px -3px;
+  background-color: var(--c-gray-soft);
+  border: 1px solid var(--c-gray-soft);
+  border-radius: 4px;
+}
+
 /* @see https://shiki.style/guide/dual-themes#class-based-dark-mode */
 .dark .astro-code,
 .dark .astro-code span {
@@ -229,7 +295,7 @@
   background-color: var(--shiki-dark-bg) !important;
 }
 
-/* rehype-autolink-headings */
+/* ---- rehype-autolink-headings ---- */
 .mdx .anchor {
   text-decoration: none;
 }
