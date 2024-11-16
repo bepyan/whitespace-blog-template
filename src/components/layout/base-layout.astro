@@ -1,4 +1,6 @@
 ---
+import '~/styles/global.css';
+import '~/styles/custom.css';
 import BaseHead from '~/components/layout/base-head.astro';
 import BaseNav from '~/components/layout/base-nav.astro';
 import type { SEO } from '~/lib/types';
@@ -17,11 +19,9 @@ const { seo, ...props } = Astro.props;
   </head>
   <body>
     <div class="blur-layer" aria-hidden="true"></div>
-    <div class="container">
-      <main {...props}>
-        <BaseNav />
-        <slot />
-      </main>
-    </div>
+    <main {...props}>
+      <BaseNav />
+      <slot />
+    </main>
   </body>
 </html>

@@ -7,18 +7,15 @@ const posts = await getPostsCollection();
 
 <BaseLayout>
   <h1>Post List Page</h1>
-  <div class="my-10">
+  <div class="my-4">
     {
       posts.map((post) => (
         <ul>
-          <li class="ml-10">
+          <li>
             <a href={`/posts/${post.slug}`}>- {post.data.title}</a>
           </li>
         </ul>
       ))
     }
-  </div>
-  <div class="text-xs">
-    {JSON.stringify(posts, null, 2)}
   </div>
 </BaseLayout>

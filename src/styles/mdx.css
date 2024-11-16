@@ -1,0 +1,226 @@
+.mdx {
+  width: 100%;
+  max-width: max-content;
+  font-size: 1rem;
+  font-weight: var(--font-wight-normal);
+  line-height: 1.75;
+  color: var(--c-text-1);
+  letter-spacing: 0px;
+}
+
+.mdx > * {
+  margin-bottom: 28px;
+}
+
+.mdx > :first-child {
+  margin-top: 0px;
+}
+
+.mdx > :where(h1, h2, h3, h4) {
+  font-weight: var(--font-wight-bold);
+  scroll-margin-top: var(--spacing-page-y);
+}
+
+.mdx > :where(h1, h2) {
+  margin-top: var(--spacing-page-y);
+}
+
+.mdx > :where(h3, h4) {
+  margin-top: 80px;
+}
+
+.mdx > :where(h1, h2) + :where(h3, h4) {
+  margin-top: 0px;
+}
+
+.mdx b,
+.mdx strong {
+  font-weight: var(--font-wight-semibold);
+}
+
+.mdx blockquote {
+  position: relative;
+  padding-left: 1rem;
+  margin: 1.75rem 0;
+  font-weight: var(--font-wight-normal);
+  color: var(--c-text-2);
+  border-left: 4px solid var(--c-gray-soft);
+}
+
+.mdx hr {
+  width: 100%;
+  height: 0;
+  padding: 0;
+  margin: var(--spacing-page-y) auto;
+  overflow: visible;
+  text-align: center;
+  border: none;
+}
+
+.mdx hr::after {
+  display: inline-block;
+  margin: -1rem 0 0;
+  font-size: 1.5rem;
+  color: var(--c-text-3);
+  content: '* * *';
+}
+
+/* ---- list ---- */
+
+.mdx > :has(+ :where(ul, ol)) {
+  margin-bottom: 8px;
+}
+
+.mdx > ul,
+.mdx > ul ul {
+  padding-left: 16px;
+  list-style-position: outside;
+  list-style-type: disc;
+}
+
+.mdx > ul ul {
+  list-style-type: circle;
+}
+
+.mdx > ul li {
+  display: list-item;
+}
+
+.mdx > ul li::marker {
+  color: var(--c-gray-3);
+}
+
+.mdx > ul li + li,
+.mdx > ul li > ul {
+  margin-top: 7px;
+}
+
+.mdx > ul li > div,
+.mdx > ul li > p {
+  margin-bottom: 12px;
+}
+
+.mdx > ol {
+  --counter-space: 12px;
+  padding: 0;
+  list-style-type: none;
+  counter-reset: basics-ol;
+}
+
+.mdx > ol li {
+  --l: calc(2 * var(--counter-space));
+  padding-left: var(--l);
+  text-indent: calc(-1 * var(--l));
+}
+
+.mdx > ol li:before {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: var(--counter-space);
+  margin-right: var(--counter-space);
+  font-feature-settings: 'tnum' 1;
+  line-height: normal;
+  color: var(--c-gray-3);
+  text-align: right;
+  letter-spacing: -0.05em;
+  content: counter(basics-ol) '. ';
+  counter-increment: basics-ol;
+  user-select: none;
+}
+
+/* ----  table ---- */
+
+.mdx table {
+  empty-cells: hide;
+}
+
+.mdx th {
+  padding: 0 8px 4px;
+  text-align: left;
+  font-weight: var(--font-wight-semibold);
+}
+
+.mdx td {
+  border: 1px solid var(--c-border);
+  padding: 8px 16px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.mdx td:first-child {
+  word-break: keep-all;
+}
+
+.mdx [data-align='center'] th,
+.mdx [data-align='center'] td {
+  text-align: center;
+}
+.mdx [data-align='right'] th,
+.mdx [data-align='right'] td {
+  text-align: right;
+}
+
+/* ----  image ---- */
+
+.mdx figure {
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.mdx img {
+  display: flex;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.mdx img + em,
+.mdx img + em p,
+.mdx figcaption {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: var(--font-wight-normal);
+  line-height: 20px;
+  color: var(--c-text-3);
+}
+
+/* ---- code block  ---- */
+
+.mdx code:not(pre code) {
+  position: relative;
+  padding: 0px;
+  font-size: 0.9rem;
+  font-weight: var(--font-wight-bold);
+  color: var(--c-text-1);
+  border-radius: 6px;
+}
+.mdx code:not(pre code)::before {
+  content: '`';
+}
+.mdx code:not(pre code)::after {
+  content: '`';
+}
+
+.mdx pre {
+  --pre-px: 24px;
+  --pre-py: 20px;
+  position: relative;
+  display: grid;
+  padding: var(--pre-py) var(--pre-px);
+  overflow-x: auto;
+  font-size: 14px;
+  line-height: 1.5;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+  border-radius: 8px;
+}
+
+.mdx pre code {
+  position: relative;
+}
+
+/* ---- ---- */
