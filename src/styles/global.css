@@ -11,7 +11,6 @@ html {
 }
 
 body {
-  min-height: 100vh;
   letter-spacing: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -23,6 +22,14 @@ body {
 }
 
 main {
+  padding: var(--spacing-page-y) var(--spacing-page-x);
+  max-width: var(--spacing-page-w);
+  width: 100%;
+  min-height: calc(100vh - var(--spacing-page-y) * 2 - 20px);
+  margin: 0 auto;
+}
+
+footer {
   padding: var(--spacing-page-y) var(--spacing-page-x);
   max-width: var(--spacing-page-w);
   width: 100%;
@@ -40,7 +47,7 @@ main {
   display: inline-block;
   word-break: break-all;
   text-decoration: underline;
-  text-decoration-color: var(--c-border);
+  text-decoration-color: var(--c-gray-1);
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
   transition: all 200ms ease-in-out;
@@ -50,7 +57,7 @@ main {
   position: absolute;
   z-index: -10;
   top: 0;
-  bottom: 2px;
+  bottom: 0;
   left: -4px;
   right: -4px;
   border-radius: 4px;
@@ -67,16 +74,15 @@ main {
 }
 
 :root {
-  --ico-link: url('data:image/svg+xml;utf8,<svg color="%23464646" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6m0 0H9m9 0v9"/></svg>');
+  --ico-link: url('data:image/svg+xml;utf8,<svg color="%233C3C4378" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6m0 0H9m9 0v9"/></svg>');
 }
 .dark {
   --ico-link: url('data:image/svg+xml;utf8,<svg color="%23B0B0B0" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6m0 0H9m9 0v9"/></svg>');
 }
-.link.external::before {
-  @apply -right-0.5;
-}
 .link.external::after {
-  @apply m-0 inline-block h-3.5 w-3.5;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
   content: '';
   background: var(--ico-link);
   background-repeat: no-repeat;

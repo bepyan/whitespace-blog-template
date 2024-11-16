@@ -67,7 +67,7 @@ export default {
         4: 'var(--box-shadow-4)',
         5: 'var(--box-shadow-5)',
       },
-      space: {
+      spacing: {
         'page-w': 'var(--spacing-page-w)',
         'page-y': 'var(--spacing-page-y)',
         'page-x': 'var(--spacing-page-x)',
