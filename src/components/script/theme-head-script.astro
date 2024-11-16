@@ -1,0 +1,12 @@
+---
+import { STORAGE_THEME_KEY, THEME_MAP } from '~/lib/theme';
+---
+
+<script is:inline define:vars={{ STORAGE_THEME_KEY, THEME_MAP }}>
+  const userTheme = localStorage.getItem(STORAGE_THEME_KEY);
+  if (userTheme) {
+    document.documentElement.classList.add(userTheme);
+  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.classList.add(THEME_MAP.dark);
+  }
+</script>

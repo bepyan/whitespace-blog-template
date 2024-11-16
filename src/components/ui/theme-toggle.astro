@@ -1,0 +1,46 @@
+---
+import { cn } from '~/lib/utils';
+---
+
+<button
+  data-theme-toggle
+  class={cn(
+    'inline-block rounded-md p-1 transition hover:bg-gray-soft active:scale-95',
+    Astro.props.class,
+  )}
+>
+  <span class="sr-only">toggle theme</span>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="32"
+    height="32"
+    viewBox="0 0 24 24"
+    ><path
+      fill="currentColor"
+      d="M16.286 20C19.442 20 22 17.472 22 14.353c0-2.472-1.607-4.573-3.845-5.338C17.837 6.194 15.415 4 12.476 4C9.32 4 6.762 6.528 6.762 9.647c0 .69.125 1.35.354 1.962a4.4 4.4 0 0 0-.83-.08C3.919 11.53 2 13.426 2 15.765S3.919 20 6.286 20z"
+    ></path>
+  </svg>
+</button>
+
+<script>
+  import { STORAGE_THEME_KEY, THEME_MAP } from '~/lib/theme';
+
+  const themeList = Object.keys(THEME_MAP);
+
+  function onToggleTheme() {
+    const currentThemeIndex = themeList.findIndex((c) =>
+      document.documentElement.classList.contains(c),
+    );
+    if (currentThemeIndex !== -1) {
+      document.documentElement.classList.remove(themeList[currentThemeIndex]);
+    }
+
+    const nextTheme = themeList[(currentThemeIndex + 1) % themeList.length];
+    localStorage.setItem(STORAGE_THEME_KEY, nextTheme);
+    document.documentElement.classList.add(nextTheme);
+  }
+
+  document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+    button.addEventListener('click', onToggleTheme);
+  });
+</script>

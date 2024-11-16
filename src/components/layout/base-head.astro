@@ -1,6 +1,7 @@
 ---
 import { SITE } from '~/site.config';
 import type { SEO } from '~/lib/types';
+import ThemeHeadScript from '~/components/script/theme-head-script.astro';
 
 export type Props = {
   seo?: SEO;
@@ -48,3 +49,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 {/* Sitemap */}
 <link rel="sitemap" href="/sitemap.xml" />
+
+{/* Script */}
+<ThemeHeadScript />
