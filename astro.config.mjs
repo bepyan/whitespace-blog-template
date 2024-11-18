@@ -16,6 +16,7 @@ import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
 import remarkBreaks from 'remark-breaks';
 
+import { transformerFragment } from './plugins/transformer-fragment';
 import { SITE } from './src/site.config';
 
 // https://astro.build/config
@@ -26,6 +27,7 @@ export default defineConfig({
     tailwind(),
     mdx({
       shikiConfig: {
+        defaultColor: false,
         themes: {
           light: 'github-light-default',
           dark: 'github-dark-default',
@@ -40,6 +42,7 @@ export default defineConfig({
           transformerNotationErrorLevel(),
           transformerMetaHighlight(),
           transformerMetaWordHighlight(),
+          transformerFragment(),
         ],
       },
       remarkPlugins: [remarkBreaks],

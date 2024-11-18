@@ -77,36 +77,38 @@ See the section on [`code`](#code).
 
 ## Code formatting
 
+`inline-code`
+
 ```
 plain text
 ```
 
-```ts
+```ts title="diff"
 console.log('hewwo'); // [!code --]
 console.log('hello'); // [!code ++]
 console.log('goodbye');
-console.log('Highlighted'); // [!code highlight]
 ```
 
-```ts
+```ts title="focused"
 console.log('Not focused');
 console.log('Focused'); // [!code focus]
 console.log('Not focused');
 ```
 
-```ts
+```ts title="highlight"
 console.log('No errors or warnings');
 console.error('Error'); // [!code error]
 console.warn('Warning'); // [!code warning]
+console.log('Highlighted'); // [!code highlight]
 ```
 
-```js /Hello/
+```js /Hello/ title="word highlight"
 const msg = 'Hello World';
 console.log(msg);
 console.log(msg); // prints Hello World
 ```
 
-```tsx twoslash
+```tsx twoslash title="twoslash" caption="this code block has custom caption."
 // @errors: 2540
 interface Todo {
   title: string;
