@@ -13,10 +13,10 @@ importers:
         version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.6.3)
       '@astrojs/mdx':
         specifier: ^3.1.9
-        version: 3.1.9(astro@4.16.13(lightningcss@1.28.1)(rollup@4.27.2)(sass@1.81.0)(typescript@5.6.3))
+        version: 3.1.9(astro@4.16.13(@types/node@22.9.0)(lightningcss@1.28.1)(rollup@4.27.2)(sass@1.81.0)(typescript@5.6.3))
       astro:
         specifier: ^4.16.13
-        version: 4.16.13(lightningcss@1.28.1)(rollup@4.27.2)(sass@1.81.0)(typescript@5.6.3)
+        version: 4.16.13(@types/node@22.9.0)(lightningcss@1.28.1)(rollup@4.27.2)(sass@1.81.0)(typescript@5.6.3)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -35,7 +35,7 @@ importers:
     devDependencies:
       '@astrojs/tailwind':
         specifier: ^5.1.2
-        version: 5.1.2(astro@4.16.13(lightningcss@1.28.1)(rollup@4.27.2)(sass@1.81.0)(typescript@5.6.3))(tailwindcss@3.4.15)
+        version: 5.1.2(astro@4.16.13(@types/node@22.9.0)(lightningcss@1.28.1)(rollup@4.27.2)(sass@1.81.0)(typescript@5.6.3))(tailwindcss@3.4.15)
       '@shikijs/transformers':
         specifier: ^1.23.1
         version: 1.23.1
@@ -45,6 +45,12 @@ importers:
       '@types/hast':
         specifier: ^3.0.4
         version: 3.0.4
+      '@types/node':
+        specifier: ^22.9.0
+        version: 22.9.0
+      plaiceholder:
+        specifier: ^3.0.0
+        version: 3.0.0(sharp@0.33.5)
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -773,6 +779,9 @@ packages:
 
   '@types/nlcst@2.0.3':
     resolution: {integrity: sha512-vSYNSDe6Ix3q+6Z7ri9lyWqgGhJTmzRjZRqyq15N0Z/1/UnVsno9G/N40NBijoYx2seFDIl0+B2mgAb9mezUCA==}
+
+  '@types/node@22.9.0':
+    resolution: {integrity: sha512-vuyHg81vvWA1Z1ELfvLko2c8f34gyA0zaic0+Rllc5lbCnbSyuvb2Oxpm6TAUAC/2xZN3QGqxBNggD1nNR2AfQ==}
 
   '@types/unist@2.0.11':
     resolution: {integrity: sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==}
@@ -1875,6 +1884,11 @@ packages:
     resolution: {integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==}
     engines: {node: '>=8'}
 
+  plaiceholder@3.0.0:
+    resolution: {integrity: sha512-jwHxxHPnr1BwRzPCeZgEK2BMsEy2327sWynw3qb6XC/oGgGDUTPtR8pFxFQmNArhMBwhkUbUr5OPhhIJpCa8eQ==}
+    peerDependencies:
+      sharp: '>= 0.30.6'
+
   postcss-import@15.1.0:
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
     engines: {node: '>=14.0.0'}
@@ -2320,6 +2334,9 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  undici-types@6.19.8:
+    resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
+
   unified@11.0.5:
     resolution: {integrity: sha512-xKvGhPWw3k84Qjh8bI3ZeJjqnyadK+GEFtazSfZv/rKeTkTjOJho6mFqh2SM96iIcZokxiOpg78GazTSg8+KHA==}
 
@@ -2673,12 +2690,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@3.1.9(astro@4.16.13(lightningcss@1.28.1)(rollup@4.27.2)(sass@1.81.0)(typescript@5.6.3))':
+  '@astrojs/mdx@3.1.9(astro@4.16.13(@types/node@22.9.0)(lightningcss@1.28.1)(rollup@4.27.2)(sass@1.81.0)(typescript@5.6.3))':
     dependencies:
       '@astrojs/markdown-remark': 5.3.0
       '@mdx-js/mdx': 3.1.0(acorn@8.14.0)
       acorn: 8.14.0
-      astro: 4.16.13(lightningcss@1.28.1)(rollup@4.27.2)(sass@1.81.0)(typescript@5.6.3)
+      astro: 4.16.13(@types/node@22.9.0)(lightningcss@1.28.1)(rollup@4.27.2)(sass@1.81.0)(typescript@5.6.3)
       es-module-lexer: 1.5.4
       estree-util-visit: 2.0.0
       gray-matter: 4.0.3
@@ -2697,9 +2714,9 @@ snapshots:
     dependencies:
       prismjs: 1.29.0
 
-  '@astrojs/tailwind@5.1.2(astro@4.16.13(lightningcss@1.28.1)(rollup@4.27.2)(sass@1.81.0)(typescript@5.6.3))(tailwindcss@3.4.15)':
+  '@astrojs/tailwind@5.1.2(astro@4.16.13(@types/node@22.9.0)(lightningcss@1.28.1)(rollup@4.27.2)(sass@1.81.0)(typescript@5.6.3))(tailwindcss@3.4.15)':
     dependencies:
-      astro: 4.16.13(lightningcss@1.28.1)(rollup@4.27.2)(sass@1.81.0)(typescript@5.6.3)
+      astro: 4.16.13(@types/node@22.9.0)(lightningcss@1.28.1)(rollup@4.27.2)(sass@1.81.0)(typescript@5.6.3)
       autoprefixer: 10.4.20(postcss@8.4.49)
       postcss: 8.4.49
       postcss-load-config: 4.0.2(postcss@8.4.49)
@@ -3304,6 +3321,10 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
 
+  '@types/node@22.9.0':
+    dependencies:
+      undici-types: 6.19.8
+
   '@types/unist@2.0.11': {}
 
   '@types/unist@3.0.3': {}
@@ -3415,7 +3436,7 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro@4.16.13(lightningcss@1.28.1)(rollup@4.27.2)(sass@1.81.0)(typescript@5.6.3):
+  astro@4.16.13(@types/node@22.9.0)(lightningcss@1.28.1)(rollup@4.27.2)(sass@1.81.0)(typescript@5.6.3):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.1
@@ -3471,8 +3492,8 @@ snapshots:
       tsconfck: 3.1.4(typescript@5.6.3)
       unist-util-visit: 5.0.0
       vfile: 6.0.3
-      vite: 5.4.11(lightningcss@1.28.1)(sass@1.81.0)
-      vitefu: 1.0.3(vite@5.4.11(lightningcss@1.28.1)(sass@1.81.0))
+      vite: 5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(sass@1.81.0)
+      vitefu: 1.0.3(vite@5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(sass@1.81.0))
       which-pm: 3.0.0
       xxhash-wasm: 1.0.2
       yargs-parser: 21.1.1
@@ -3604,13 +3625,11 @@ snapshots:
     dependencies:
       color-name: 1.1.4
       simple-swizzle: 0.2.2
-    optional: true
 
   color@4.2.3:
     dependencies:
       color-convert: 2.0.1
       color-string: 1.9.1
-    optional: true
 
   comma-separated-tokens@2.0.3: {}
 
@@ -3645,8 +3664,7 @@ snapshots:
   detect-libc@1.0.3:
     optional: true
 
-  detect-libc@2.0.3:
-    optional: true
+  detect-libc@2.0.3: {}
 
   deterministic-object-hash@2.0.2:
     dependencies:
@@ -4022,8 +4040,7 @@ snapshots:
       is-alphabetical: 2.0.1
       is-decimal: 2.0.1
 
-  is-arrayish@0.3.2:
-    optional: true
+  is-arrayish@0.3.2: {}
 
   is-binary-path@2.1.0:
     dependencies:
@@ -4784,6 +4801,10 @@ snapshots:
     dependencies:
       find-up: 4.1.0
 
+  plaiceholder@3.0.0(sharp@0.33.5):
+    dependencies:
+      sharp: 0.33.5
+
   postcss-import@15.1.0(postcss@8.4.49):
     dependencies:
       postcss: 8.4.49
@@ -5145,7 +5166,6 @@ snapshots:
       '@img/sharp-wasm32': 0.33.5
       '@img/sharp-win32-ia32': 0.33.5
       '@img/sharp-win32-x64': 0.33.5
-    optional: true
 
   shebang-command@2.0.0:
     dependencies:
@@ -5167,7 +5187,6 @@ snapshots:
   simple-swizzle@0.2.2:
     dependencies:
       is-arrayish: 0.3.2
-    optional: true
 
   sisteransi@1.0.5: {}
 
@@ -5316,6 +5335,8 @@ snapshots:
 
   typescript@5.6.3: {}
 
+  undici-types@6.19.8: {}
+
   unified@11.0.5:
     dependencies:
       '@types/unist': 3.0.3
@@ -5395,19 +5416,20 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vite@5.4.11(lightningcss@1.28.1)(sass@1.81.0):
+  vite@5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(sass@1.81.0):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.49
       rollup: 4.27.2
     optionalDependencies:
+      '@types/node': 22.9.0
       fsevents: 2.3.3
       lightningcss: 1.28.1
       sass: 1.81.0
 
-  vitefu@1.0.3(vite@5.4.11(lightningcss@1.28.1)(sass@1.81.0)):
+  vitefu@1.0.3(vite@5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(sass@1.81.0)):
     optionalDependencies:
-      vite: 5.4.11(lightningcss@1.28.1)(sass@1.81.0)
+      vite: 5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(sass@1.81.0)
 
   volar-service-css@0.0.62(@volar/language-service@2.4.10):
     dependencies:

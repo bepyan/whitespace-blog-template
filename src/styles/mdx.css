@@ -162,17 +162,6 @@
 
 /* ----  image ---- */
 
-.mdx figure {
-  overflow: hidden;
-  border-radius: 6px;
-}
-
-.mdx img {
-  display: flex;
-  overflow: hidden;
-  border-radius: 6px;
-}
-
 .mdx img + em,
 .mdx img + em p,
 .mdx figcaption {

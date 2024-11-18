@@ -6,6 +6,7 @@ import BaseLayout from '~/components/layout/base-layout.astro';
 import MediumZoomScript from '~/components/script/medium-zoom-script.astro';
 import TwoslashFloatingScript from '~/components/script/twoslash-floating-script.astro';
 import CopyCodeScript from '~/components/script/copy-code-script.astro';
+import PostImage from '~/components/mdx/post-image.astro';
 
 type Props = {
   post: CollectionEntry<'posts'>;
@@ -22,7 +23,7 @@ const { Content } = await post.render();
     <p class="text-text-3">{post.data.date}</p>
   </div>
   <article class="mdx">
-    <Content />
+    <Content components={{ img: PostImage }} />
   </article>
   {/* scripts */}
   <MediumZoomScript />
