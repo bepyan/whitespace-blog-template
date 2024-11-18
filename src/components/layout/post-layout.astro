@@ -1,8 +1,10 @@
 ---
+import '@shikijs/twoslash/style-rich.css';
 import '~/styles/mdx.css';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '~/components/layout/base-layout.astro';
 import MediumZoomScript from '~/components/script/medium-zoom-script.astro';
+import TwoslashFloatingScript from '~/components/script/twoslash-floating-script.astro';
 
 type Props = {
   post: CollectionEntry<'posts'>;
@@ -23,4 +25,5 @@ const { Content } = await post.render();
   </article>
   {/* scripts */}
   <MediumZoomScript />
+  <TwoslashFloatingScript />
 </BaseLayout>

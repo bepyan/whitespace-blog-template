@@ -216,6 +216,8 @@
   -o-tab-size: 2;
   tab-size: 2;
   border-radius: 8px;
+  /* border: 1px solid var(--c-border); */
+  background-color: var(--c-bg-2);
 }
 
 .mdx pre code {
@@ -233,6 +235,10 @@
   --vp-code-line-error-color: var(--c-red-soft);
 }
 
+.dark {
+  --twoslash-popup-bg: inherit;
+}
+
 .astro-code .highlighted,
 .astro-code .diff {
   display: inline-block;
@@ -242,13 +248,16 @@
   transition: background-color 0.5s;
 }
 .astro-code .highlighted {
-  background-color: var(--selection);
+  background-color: var(--selection) !important;
+}
+.dark .astro-code .highlighted span {
+  background-color: transparent !important;
 }
 .astro-code .highlighted.error {
-  background-color: var(--vp-code-line-error-color);
+  background-color: var(--vp-code-line-error-color) !important;
 }
 .astro-code .highlighted.warning {
-  background-color: var(--vp-code-line-warning-color);
+  background-color: var(--vp-code-line-warning-color) !important;
 }
 .astro-code .diff:before {
   position: absolute;
@@ -256,15 +265,21 @@
   user-select: none;
 }
 .astro-code .diff.remove {
-  background-color: var(--vp-code-line-diff-remove-color);
+  background-color: var(--vp-code-line-diff-remove-color) !important;
   opacity: 0.7;
+}
+.dark .astro-code .diff.remove span {
+  background-color: transparent !important;
 }
 .astro-code .diff.remove:before {
   color: var(--vp-code-line-diff-remove-symbol-color);
   content: '-';
 }
 .astro-code .diff.add {
-  background-color: var(--vp-code-line-diff-add-color);
+  background-color: var(--vp-code-line-diff-add-color) !important;
+}
+.astro-code .diff.add span {
+  background-color: transparent !important;
 }
 .astro-code .diff.add:before {
   color: var(--vp-code-line-diff-add-symbol-color);
@@ -286,6 +301,14 @@
   background-color: var(--c-gray-soft);
   border: 1px solid var(--c-gray-soft);
   border-radius: 4px;
+}
+
+.astro-code .twoslash-popup-container {
+  position: fixed;
+  z-index: 10;
+  width: max-content;
+  max-width: var(--spacing-page-w);
+  white-space: normal;
 }
 
 /* @see https://shiki.style/guide/dual-themes#class-based-dark-mode */

@@ -23,7 +23,8 @@
   },
   "devDependencies": {
     "@astrojs/tailwind": "^5.1.2",
-    "@shikijs/transformers": "^1.23.0",
+    "@shikijs/transformers": "^1.23.1",
+    "@shikijs/twoslash": "^1.23.1",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-organize-imports": "^4.1.0",

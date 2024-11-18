@@ -9,6 +9,7 @@ import {
   transformerNotationFocus,
   transformerNotationHighlight,
 } from '@shikijs/transformers';
+import { transformerTwoslash } from '@shikijs/twoslash';
 import { defineConfig } from 'astro/config';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
@@ -26,10 +27,13 @@ export default defineConfig({
     mdx({
       shikiConfig: {
         themes: {
-          light: 'kanagawa-wave',
-          dark: 'kanagawa-dragon',
+          light: 'github-light-default',
+          dark: 'github-dark-default',
         },
         transformers: [
+          transformerTwoslash({
+            explicitTrigger: true,
+          }),
           transformerNotationHighlight(),
           transformerNotationDiff(),
           transformerNotationFocus(),

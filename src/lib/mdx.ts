@@ -1,8 +1,8 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
-import { isDev } from '~/lib/utils';
+import { isProd } from '~/lib/utils';
 
 export const isDraft = (post: CollectionEntry<'posts'>) => {
-  return isDev || !post.data.draft;
+  return isProd && post.data.draft;
 };
 
 export const sortCollectionDateDesc = (
@@ -14,6 +14,6 @@ export const sortCollectionDateDesc = (
 
 export const getPostsCollection = async () => {
   return (await getCollection('posts'))
-    .filter(isDraft)
+    .filter((post) => !isDraft(post))
     .sort(sortCollectionDateDesc);
 };
