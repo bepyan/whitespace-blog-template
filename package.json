@@ -17,6 +17,7 @@
     "astro": "^4.16.13",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
+    "es-toolkit": "^1.27.0",
     "medium-zoom": "^1.1.0",
     "tailwind-merge": "^2.5.4",
     "typescript": "^5.6.3"
