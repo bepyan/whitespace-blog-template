@@ -1,34 +1,39 @@
 <script>
-  // @see plugins/transformer-fragment.ts
-  const codeBlockList = document.querySelectorAll('.mdx [data-code-fragment]');
+  document.addEventListener('DOMContentLoaded', () => {
+    // @see plugins/transformer-fragment.ts
+    const codeBlockList = document.querySelectorAll(
+      '.mdx [data-code-fragment]',
+    );
 
-  codeBlockList.forEach((codeBlock) => {
-    const code = codeBlock.querySelector<HTMLElement>('pre > code')!.innerText;
-    const copyButton = codeBlock.querySelector<HTMLElement>('.copy');
+    codeBlockList.forEach((codeBlock) => {
+      const code =
+        codeBlock.querySelector<HTMLElement>('pre > code')!.innerText;
+      const copyButton = codeBlock.querySelector<HTMLElement>('.copy');
 
-    if (!copyButton) {
-      return;
-    }
+      if (!copyButton) {
+        return;
+      }
 
-    let timeoutId: NodeJS.Timeout;
-    let blurTimeoutId: NodeJS.Timeout;
+      let timeoutId: NodeJS.Timeout;
+      let blurTimeoutId: NodeJS.Timeout;
 
-    copyButton.addEventListener('click', async () => {
-      await navigator.clipboard.writeText(code);
-      copyButton.classList.add('copied');
+      copyButton.addEventListener('click', async () => {
+        await navigator.clipboard.writeText(code);
+        copyButton.classList.add('copied');
 
-      timeoutId && clearTimeout(timeoutId);
-      blurTimeoutId && clearTimeout(blurTimeoutId);
+        timeoutId && clearTimeout(timeoutId);
+        blurTimeoutId && clearTimeout(blurTimeoutId);
 
-      blurTimeoutId = setTimeout(() => {
-        if (document.activeElement === copyButton) {
-          copyButton.blur();
-        }
-      }, 1500);
+        blurTimeoutId = setTimeout(() => {
+          if (document.activeElement === copyButton) {
+            copyButton.blur();
+          }
+        }, 1500);
 
-      timeoutId = setTimeout(() => {
-        copyButton.classList.remove('copied');
-      }, 2000);
+        timeoutId = setTimeout(() => {
+          copyButton.classList.remove('copied');
+        }, 2000);
+      });
     });
   });
 </script>
