@@ -1,13 +1,17 @@
-<script type="module">
+<script>
   // @see plugins/transformer-fragment.ts
   const codeBlockList = document.querySelectorAll('.mdx [data-code-fragment]');
 
   codeBlockList.forEach((codeBlock) => {
-    const code = codeBlock.querySelector('pre > code').innerText;
-    const copyButton = codeBlock.querySelector('.copy');
+    const code = codeBlock.querySelector<HTMLElement>('pre > code')!.innerText;
+    const copyButton = codeBlock.querySelector<HTMLElement>('.copy');
 
-    let timeoutId = null;
-    let blurTimeoutId = null;
+    if (!copyButton) {
+      return;
+    }
+
+    let timeoutId: NodeJS.Timeout;
+    let blurTimeoutId: NodeJS.Timeout;
 
     copyButton.addEventListener('click', async () => {
       await navigator.clipboard.writeText(code);
