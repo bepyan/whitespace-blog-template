@@ -43,3 +43,33 @@ const {
   </div>
   {isValidCaption && <figcaption>{alt}</figcaption>}
 </figure>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const imgList = document.querySelectorAll('.mdx figure img');
+
+    imgList.forEach((img) => {
+      img.addEventListener('load', () => {
+        img.classList.add('loaded');
+      });
+    });
+  });
+</script>
+
+<style>
+  figure {
+    animation: fadeIn 0.2s ease-out;
+  }
+  img.loaded {
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>
