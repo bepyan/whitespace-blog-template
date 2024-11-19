@@ -1,0 +1,82 @@
+---
+import type { TocSection } from '~/lib/mdx/toc';
+
+interface Props {
+  toc: TocSection[];
+}
+
+const { toc } = Astro.props;
+---
+
+<ul data-toc-container class="space-y-2 font-sans text-sm">
+  {
+    toc.map((section) => (
+      <li class="flex">
+        <a class="link" href={`#${section.slug}`} data-depth={section.depth}>
+          {section.value}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  [data-depth='1'] {
+    margin-left: 10px;
+  }
+  [data-depth='2'] {
+    margin-left: 20px;
+  }
+  [data-depth='3'] {
+    margin-left: 30px;
+  }
+
+  .link {
+    color: var(--c-text-3);
+  }
+  .dark .link {
+    color: var(--c-text-2);
+  }
+  .link.active {
+    color: var(--c-text-1);
+  }
+</style>
+
+<script>
+  import { throttle } from 'es-toolkit';
+  import { getRootCssVar } from '~/lib/utils';
+
+  function initTocScroll() {
+    const toc = document.querySelector('[data-toc-container]');
+    const headings = Array.from(
+      document.querySelectorAll<HTMLElement>('.mdx h1, .mdx h2, .mdx h3'),
+    );
+    const tocLinks = toc?.querySelectorAll('a');
+
+    const onScroll = throttle(() => {
+      const top = window.scrollY;
+
+      const scrollOffsetTop = Number(getRootCssVar('--spacing-page-y')) || 128;
+      const nextHeadIndex = headings.findIndex(
+        (heading) => top < heading.offsetTop - scrollOffsetTop,
+      );
+      const currentHeadIndex = nextHeadIndex === 0 ? 0 : nextHeadIndex - 1;
+      const currentId = headings[currentHeadIndex].id;
+
+      tocLinks?.forEach((link) => {
+        const slugId = link.getAttribute('href')?.slice(1);
+
+        if (slugId === currentId) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }, 10);
+
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+  }
+
+  document.addEventListener('DOMContentLoaded', initTocScroll);
+</script>

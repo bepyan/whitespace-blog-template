@@ -7,12 +7,17 @@ import MediumZoomScript from '~/components/script/medium-zoom-script.astro';
 import TwoslashFloatingScript from '~/components/script/twoslash-floating-script.astro';
 import CopyCodeScript from '~/components/script/copy-code-script.astro';
 import PostImage from '~/components/mdx/post-image.astro';
+import { getTableOfContents } from '~/lib/mdx/toc';
+import BaseLeftAside from '~/components/layout/base-left-aside.astro';
+import PostToc from '~/components/layout/post-toc.astro';
 
 type Props = {
   post: CollectionEntry<'posts'>;
 };
 
 const { post } = Astro.props;
+
+const toc = getTableOfContents(post.body);
 
 const { Content } = await post.render();
 ---
@@ -25,6 +30,12 @@ const { Content } = await post.render();
   <article class="mdx">
     <Content components={{ img: PostImage }} />
   </article>
+  <div>
+    {/* post footer */}
+  </div>
+  <BaseLeftAside>
+    <PostToc {toc} />
+  </BaseLeftAside>
   {/* scripts */}
   <MediumZoomScript />
   <TwoslashFloatingScript />

@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { format } from 'date-fns';
 import BaseLayout from '~/components/layout/base-layout.astro';
-import { getPostsCollection } from '~/lib/mdx';
+import { getPostsCollection } from '~/lib/mdx/post';
 
 const posts = await getPostsCollection();
 

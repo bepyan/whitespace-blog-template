@@ -7,3 +7,7 @@ export const isDev = import.meta.env.DEV;
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export function getRootCssVar(name: string) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name);
+}
