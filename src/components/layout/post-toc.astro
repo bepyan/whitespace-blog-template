@@ -61,7 +61,7 @@ const { toc } = Astro.props;
         (heading) => top < heading.offsetTop - scrollOffsetTop,
       );
       const currentHeadIndex = nextHeadIndex === 0 ? 0 : nextHeadIndex - 1;
-      const currentId = headings[currentHeadIndex].id;
+      const currentId = headings[currentHeadIndex]?.id;
 
       tocLinks?.forEach((link) => {
         const slugId = link.getAttribute('href')?.slice(1);
