@@ -10,6 +10,8 @@ import PostImage from '~/components/mdx/post-image.astro';
 import { getTableOfContents } from '~/lib/mdx/toc';
 import BaseLeftAside from '~/components/layout/base-left-aside.astro';
 import PostToc from '~/components/layout/post-toc.astro';
+import { format } from 'date-fns';
+import PostHeader from '~/components/layout/post-header.astro';
 
 type Props = {
   post: CollectionEntry<'posts'>;
@@ -19,14 +21,16 @@ const { post } = Astro.props;
 
 const toc = getTableOfContents(post.body);
 
-const { Content } = await post.render();
+const { Content, remarkPluginFrontmatter } = await post.render();
 ---
 
 <BaseLayout>
-  <div class="mb-10">
-    <h1 class="font-display text-5xl font-bold">{post.data.title}</h1>
-    <p class="text-text-3">{post.data.date}</p>
-  </div>
+  <PostHeader
+    class="mb-10"
+    title={post.data.title}
+    date={post.data.date}
+    readingTime={remarkPluginFrontmatter.minutesRead}
+  />
   <article class="mdx">
     <Content components={{ img: PostImage }} />
   </article>

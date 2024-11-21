@@ -16,6 +16,7 @@ import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
 import remarkBreaks from 'remark-breaks';
 
+import { remarkReadingTime } from './plugins/remark-reading-time.mjs';
 import { transformerFragment } from './plugins/transformer-fragment';
 import { SITE } from './src/site.config';
 
@@ -45,7 +46,7 @@ export default defineConfig({
           transformerFragment(),
         ],
       },
-      remarkPlugins: [remarkBreaks],
+      remarkPlugins: [remarkBreaks, remarkReadingTime],
       rehypePlugins: [
         rehypeSlug,
         [
