@@ -8,7 +8,7 @@ draft: false
 
 # Heading 1
 
-Ad dolor incididunt quis irure officia officia sunt labore minim do nulla incididunt ex. Qui eiusmod ex laboris minim aliqua incididunt consequat. Cillum ea culpa ullamco occaecat sunt reprehenderit cillum ea aute exercitation sit dolor eiusmod. Adipisicing ut enim ullamco cupidatat minim mollit eiusmod commodo.
+Ad dolor incididunt quis irure officia officia sunt labore minim do nulla incididunt ex. Qui eiusmod ex laboris minim aliqua incididunt consequat. Cillum ea culpa ullamco occaecat sunt reprehenderit cillum ea aute exercitation sit dolor eiusmod. **Adipisicing** ut enim ullamco cupidatat minim mollit eiusmod commodo.
 
 Pariatur officia consequat duis ut. Pariatur occaecat reprehenderit excepteur proident amet laborum fugiat deserunt nisi ipsum magna ex magna proident. Labore voluptate eiusmod nisi mollit magna culpa cupidatat magna laboris. Velit nostrud velit commodo incididunt eu irure.
 
@@ -25,33 +25,17 @@ Velit sint veniam labore veniam.
 
 Fugiat incididunt culpa laboris incididunt nulla aliquip nostrud amet cillum.
 
-## Basic Formatting
+## Telegraphic
 
-**two asterisks** or **two underscores**.
-_single asterisk_ or a _single underscore_
+**bold**
+_italic_
 **_bold and italic_**
-~~two tildes~~
-
-- First item
-- Second item
-- Third item
-  1. Indented item
-  1. Indented item
-- Fourth item
-
-- [x] Write the press release
-- [ ] Update the website
-  - [x] Create a new page
-  - [ ] Update the homepage
-
----
+~~del~~
 
 ## Link
 
 [Semantic description](https://roneo.org/markdown)
-[I'm a link][Reference text]
 
-[This link] will do the same as well. It works as the identifier itself.
 [reference text]: https://jamstack.club
 [this link]: https://roneo.org/markdown
 
@@ -69,7 +53,23 @@ This is the _[Markdown Guide](https://www.markdownguide.org)_.
 
 See the section on [`code`](#code).
 
-## Blockquotes
+## List
+
+**Unordered List**
+
+- First item
+- Second item
+  - Indented item
+  - Indented item
+- Third item
+
+**Ordered List**
+
+1. Coffee
+2. Tea
+3. Milk
+
+### Blockquotes
 
 > First level
 >
@@ -77,14 +77,16 @@ See the section on [`code`](#code).
 
 > **Markdown** can be used _inside quotes_
 >
-> 1.  This is the first list item.
-> 1.  This is the second list item.
+> 1. This is the first list item.
+> 2. This is the second list item.
 >
-> ~~strikethrough~~
+> - ~~strikethrough~~
 >
-> Here's some example code:
+> Here's some example `code`:
 >
->     return shell_exec("echo $input | $markdown_script");
+> ```shell
+> echo "hello world"
+> ```
 
 ## Code formatting
 
