@@ -1,5 +1,6 @@
 // @ts-check
 import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import {
   transformerMetaHighlight,
@@ -25,6 +26,7 @@ export default defineConfig({
   site: SITE.domain,
   output: 'static',
   integrations: [
+    sitemap(),
     tailwind(),
     mdx({
       shikiConfig: {
