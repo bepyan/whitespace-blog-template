@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  border-color: var(--c-border);
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--spacing-page-y);
