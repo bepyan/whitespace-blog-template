@@ -1,0 +1,83 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import CopyLink from '~/components/ui/copy-link';
+import {
+  BlueskyIcon,
+  LinkedInIcon,
+  RedditIcon,
+  XformerlyTwitterIcon,
+  LinkIcon,
+} from '~/components/ui/icons';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+
+const socials = [
+  {
+    type: 'link',
+    Icon: BlueskyIcon,
+    url: `https://bsky.app/intent/compose?text=${encodeURIComponent(
+      `${post.data.title} by @todo\n\n ${Astro.url}`,
+    )}`,
+  },
+  {
+    type: 'link',
+    Icon: XformerlyTwitterIcon,
+    url: `https://twitter.com/intent/tweet/?text=${encodeURIComponent(
+      `${post.data.title} by @todo\n\n ${Astro.url}`,
+    )}`,
+  },
+  {
+    type: 'link',
+    Icon: LinkedInIcon,
+    url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+      `${Astro.url}`,
+    )}&title=${encodeURIComponent(`${post.data.title}`)}`,
+  },
+  {
+    type: 'link',
+    Icon: RedditIcon,
+    url: `https://reddit.com/submit/?url=${encodeURIComponent(`${Astro.url}`)}`,
+  },
+  {
+    type: 'CopyLink',
+  },
+] as const;
+---
+
+<div class="my-20">
+  <p class="text-center text-text-2">Share this article with your friends</p>
+  <div class="mt-1 flex flex-wrap items-center justify-center gap-1">
+    {
+      socials.map((social) => {
+        if (social.type === 'CopyLink') {
+          return (
+            <CopyLink
+              client:load
+              className="rounded-md p-1.5 text-text-2 transition hover:bg-gray-soft hover:text-text-1"
+            />
+          );
+        }
+
+        if (social.type === 'link') {
+          const { Icon, url } = social;
+          return (
+            <a
+              class="rounded-md p-1.5 text-text-2 transition hover:bg-gray-soft hover:text-text-1"
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon />
+            </a>
+          );
+        }
+
+        return null;
+      })
+    }
+  </div>
+</div>

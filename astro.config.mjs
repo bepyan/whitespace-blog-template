@@ -21,6 +21,8 @@ import { remarkReadingTime } from './plugins/remark-reading-time.mjs';
 import { transformerFragment } from './plugins/transformer-fragment';
 import { SITE } from './src/site.config';
 
+import react from '@astrojs/react';
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE.domain,
@@ -28,6 +30,7 @@ export default defineConfig({
   integrations: [
     sitemap(),
     tailwind(),
+    react(),
     mdx({
       shikiConfig: {
         defaultColor: false,

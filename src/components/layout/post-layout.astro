@@ -14,6 +14,7 @@ import PostToc from '~/components/layout/post-toc.astro';
 import PostHeader from '~/components/layout/post-header.astro';
 import PostRelated from '~/components/layout/post-related.astro';
 import PostTags from '~/components/layout/post-tags.astro';
+import PostShare from '~/components/layout/post-share.astro';
 
 type Props = {
   post: CollectionEntry<'posts'>;
@@ -41,6 +42,7 @@ const { Content, remarkPluginFrontmatter } = await post.render();
     <hr />
   </article>
   <div>
+    <PostShare {post} />
     <PostTags {tags} />
     <PostRelated {relatedPosts} />
   </div>
