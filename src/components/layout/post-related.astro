@@ -17,13 +17,10 @@ const { relatedPosts } = Astro.props;
         {relatedPosts.map((p) => {
           return (
             <li>
-              <span class="font-mono">> </span>
+              <span class="font-mono">&gt; </span>
               <a class="link text-text-1" href={`/posts/${p.slug}`}>
                 {p.data.title}
               </a>
-              <span class="ml-1 text-xs">
-                {format(p.data.date, 'yy.MM.dd')}
-              </span>
             </li>
           );
         })}
