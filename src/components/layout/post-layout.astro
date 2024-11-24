@@ -1,6 +1,7 @@
 ---
 import '@shikijs/twoslash/style-rich.css';
 import '~/styles/mdx.css';
+
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '~/components/layout/base-layout.astro';
 import MediumZoomScript from '~/components/script/medium-zoom-script.astro';
@@ -10,14 +11,17 @@ import PostImage from '~/components/mdx/post-image.astro';
 import { getTableOfContents } from '~/lib/mdx/toc';
 import BaseLeftAside from '~/components/layout/base-left-aside.astro';
 import PostToc from '~/components/layout/post-toc.astro';
-import { format } from 'date-fns';
 import PostHeader from '~/components/layout/post-header.astro';
+import PostRelated from '~/components/layout/post-related.astro';
 
 type Props = {
   post: CollectionEntry<'posts'>;
+  prevPost?: CollectionEntry<'posts'>;
+  nextPost?: CollectionEntry<'posts'>;
+  relatedPosts: CollectionEntry<'posts'>[];
 };
 
-const { post } = Astro.props;
+const { post, relatedPosts } = Astro.props;
 
 const toc = getTableOfContents(post.body);
 
@@ -33,10 +37,12 @@ const { Content, remarkPluginFrontmatter } = await post.render();
   />
   <article class="mdx">
     <Content components={{ img: PostImage }} />
+    <hr />
   </article>
   <div>
-    {/* post footer */}
+    <PostRelated {relatedPosts} />
   </div>
+  {/* asides */}
   <BaseLeftAside>
     <PostToc {toc} />
   </BaseLeftAside>

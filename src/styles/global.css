@@ -22,7 +22,7 @@ body {
 }
 
 main {
-  padding: var(--spacing-page-y) var(--spacing-page-x);
+  padding: var(--spacing-page-y) var(--spacing-page-x) 0;
   max-width: var(--spacing-page-w);
   width: 100%;
   min-height: calc(100vh - var(--spacing-page-y) * 2 - 20px);

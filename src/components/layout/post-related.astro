@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { format } from 'date-fns';
+
+interface Props {
+  relatedPosts: CollectionEntry<'posts'>[];
+}
+
+const { relatedPosts } = Astro.props;
+---
+
+{
+  relatedPosts.length && (
+    <div class="text-text-2">
+      <p>Related Posts</p>
+      <ul>
+        {relatedPosts.map((p) => {
+          return (
+            <li>
+              <span class="font-mono">> </span>
+              <a class="link text-text-1" href={`/posts/${p.slug}`}>
+                {p.data.title}
+              </a>
+              <span class="ml-1 text-xs">
+                {format(p.data.date, 'yy.MM.dd')}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  )
+}
