@@ -3,7 +3,7 @@ import type { APIRoute } from 'astro';
 import { getPostsCollection } from '~/lib/mdx/post';
 import { SITE } from '~/site.config';
 
-export const GET: APIRoute = async (context) => {
+export const GET: APIRoute = async () => {
   const postList = await getPostsCollection();
 
   return rss({
