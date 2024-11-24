@@ -39,3 +39,15 @@ export const getRelatedPosts = (
     .map((p) => p.post)
     .slice(0, 4);
 };
+
+export const getTags = (postList: CollectionEntry<'posts'>[]) => {
+  return [
+    ...new Set(
+      postList
+        .map((post) => post.data.tags)
+        .flat()
+        .filter((post): post is string => Boolean(post))
+        .toSorted(),
+    ),
+  ];
+};

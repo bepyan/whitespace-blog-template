@@ -1,0 +1,22 @@
+---
+interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+---
+
+{
+  tags.length > 0 && (
+    <div class="my-10 text-text-2">
+      <span>Tags:</span>
+      {tags.map((tag) => (
+        <span class="ml-2 inline-block">
+          <a class="link text-text-1" href={`/tags#${tag}`}>
+            {tag}
+          </a>
+        </span>
+      ))}
+    </div>
+  )
+}
