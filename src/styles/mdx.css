@@ -125,6 +125,10 @@
   user-select: none;
 }
 
+.mdx li p {
+  display: inline;
+}
+
 /* ----  table ---- */
 
 .mdx table {
