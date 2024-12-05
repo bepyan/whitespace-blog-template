@@ -8,3 +8,93 @@ tags:
   - astro
   - tutorial
 ---
+
+As a developer working with Astro, I recently implemented a related posts feature for my blog using a straightforward yet effective approach. The implementation combines tag matching and title similarity to create meaningful content recommendations.
+
+## Implementation Overview
+
+
+The core functionality relies on two main components: tag matching and title similarity comparison. Here's the primary function that handles the related posts generation:
+
+```ts
+import { type CollectionEntry } from 'astro:content';
+
+export const getRelatedPosts = (
+  post: CollectionEntry<'posts'>,
+  postList: CollectionEntry<'posts'>[],
+) => {
+  return postList
+    .filter((p) => p.slug !== post.slug)
+    .map((p) => {
+      const tagPoint = post.data.tags
+        ? post.data.tags.filter((tag) => p.data.tags?.includes(tag)).length
+        : 0;
+      const titlePoint = compareTwoStrings(post.data.title, p.data.title);
+      return {
+        post: p,
+        similarity: tagPoint + 3.0 * titlePoint, // [!code highlight]
+      };
+    })
+    .toSorted((a, b) => b.similarity - a.similarity)
+    .map((p) => p.post)
+    .slice(0, 4);
+};
+```
+
+The algorithm calculates a similarity score based on two factors: the number of matching tags and the title similarity. Title similarity is given more weight (3x) in the final calculation to emphasize content relevance.
+
+## Title Similarity Calculation
+
+For title comparison, I implemented the [Dice-Sørensen coefficient](https://en.wikipedia.org/wiki/Dice-S%C3%B8rensen_coefficient) algorithm, which provides an effective way to measure string similarity. Here's the implementation:
+
+```ts title="dice-coefficient.ts" twoslash
+// Finds degree of similarity between two strings, based on Dice's Coefficient algorithm.
+// @see https://github.com/aceakash/string-similarity/blob/master/src/index.js
+
+function removeWhitespace(str: string): string {
+  return str.replace(/\s+/g, '');
+}
+
+function createBigrams(str: string): Map<string, number> {
+  const bigrams = new Map<string, number>();
+  for (let i = 0; i < str.length - 1; i++) {
+    const bigram = str.substring(i, i + 2);
+    const count = bigrams.has(bigram) ? bigrams.get(bigram)! + 1 : 1;
+
+    bigrams.set(bigram, count);
+  }
+  return bigrams;
+}
+
+function getIntersectionSize(
+  first: Map<string, number>,
+  second: Map<string, number>,
+): number {
+  let intersectionSize = 0;
+  for (const [bigram, count] of second) {
+    if (first.has(bigram)) {
+      intersectionSize += Math.min(count, first.get(bigram)!);
+    }
+  }
+  return intersectionSize;
+}
+
+export function compareTwoStrings(str1: string, str2: string): number {
+  const first = removeWhitespace(str1);
+  const second = removeWhitespace(str2);
+
+  if (first === second) return 1;
+  if (first.length < 2 || second.length < 2) return 0;
+
+  const firstBigrams = createBigrams(first);
+  const secondBigrams = createBigrams(second);
+
+  const intersectionSize = getIntersectionSize(firstBigrams, secondBigrams);
+
+  return (2.0 * intersectionSize) / (first.length + second.length - 2);
+}
+```
+
+This algorithm works by creating bigrams (pairs of consecutive letters) from the strings and comparing their overlap, providing a similarity score between 0 and 1.
+
+The combination of tag matching and title similarity ensures that the related posts feature suggests content that is both topically relevant and contextually similar to the current post. The implementation is efficient and can be easily integrated into any Astro-based blog or content website.
