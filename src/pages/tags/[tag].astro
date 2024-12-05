@@ -1,10 +1,7 @@
 ---
 import BaseLayout from '~/components/layout/base-layout.astro';
-import { getPostsCollection, getTags } from '~/lib/mdx/post';
-
-import { getCollection } from 'astro:content';
-import PostTags from '~/components/layout/post-tags.astro';
 import PostYearList from '~/components/ui/post-year-list.astro';
+import { getPostsCollection, getTags } from '~/lib/mdx/post';
 
 export async function getStaticPaths() {
   const posts = await getPostsCollection();
