@@ -4,6 +4,7 @@ import { getPostsCollection, getTags } from '~/lib/mdx/post';
 
 import { getCollection } from 'astro:content';
 import PostTags from '~/components/layout/post-tags.astro';
+import PostYearList from '~/components/ui/post-year-list.astro';
 
 export async function getStaticPaths() {
   const posts = await getPostsCollection();
@@ -26,32 +27,21 @@ const { posts, otherTags } = Astro.props;
 
 <BaseLayout>
   <h1 class="font-display text-5xl font-bold">Tags: {tag}</h1>
-  <div class="my-10 text-text-2">
-    <ul class="">
-      {
-        posts.map((post) => (
-          <li>
-            <a class="link text-text-1" href={`/posts/${post.slug}`}>
-              {post.data.title}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
 
-    {
-      otherTags.length > 0 && (
-        <div class="my-10 text-text-2">
-          <p>See more other tags:</p>
-          {otherTags.map((tag) => (
-            <span class="mr-2 inline-block">
-              <a class="link text-text-1" href={`/tags/${tag}`}>
-                {tag}
-              </a>
-            </span>
-          ))}
-        </div>
-      )
-    }
-  </div>
+  <PostYearList {posts} />
+
+  {
+    otherTags.length > 0 && (
+      <div class="my-10 text-text-2">
+        <p>See more other tags:</p>
+        {otherTags.map((tag) => (
+          <span class="mr-2 inline-block">
+            <a class="link text-text-1" href={`/tags/${tag}`}>
+              {tag}
+            </a>
+          </span>
+        ))}
+      </div>
+    )
+  }
 </BaseLayout>
