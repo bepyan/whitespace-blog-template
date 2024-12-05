@@ -21,9 +21,12 @@ const yearList = Object.entries(
   <h1 class="font-display text-5xl font-bold">Posts</h1>
   <div class="group relative my-14 border-l pl-4">
     <div class="absolute -left-16 select-none">
-      <h2 class="-mx-1 rounded-md px-1 transition group-hover:bg-gray-soft">
+      <a
+        class="-mx-1 rounded-md px-1 transition group-hover:bg-gray-soft"
+        href="/tags"
+      >
         Tags
-      </h2>
+      </a>
     </div>
     <div class="gap-2">
       {
@@ -31,7 +34,7 @@ const yearList = Object.entries(
           <div class="mx-1 inline-block">
             <a
               class="link hover:!opacity-100 group-hover:opacity-60"
-              href={`/tags#${tag}`}
+              href={`/tags/${tag}`}
             >
               {tag}
             </a>
