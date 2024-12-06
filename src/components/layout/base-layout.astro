@@ -6,6 +6,7 @@ import BaseNav from '~/components/layout/base-nav.astro';
 import type { SEO } from '~/lib/types';
 import { SITE } from '~/site.config';
 import BaseFooter from '~/components/layout/base-footer.astro';
+import { ClientRouter } from 'astro:transitions';
 
 type Props = {
   seo?: SEO;
@@ -17,6 +18,7 @@ const { seo, ...props } = Astro.props;
 <html lang={SITE.lang}>
   <head>
     <BaseHead {seo} />
+    <ClientRouter />
   </head>
   <body>
     <div class="blur-layer" aria-hidden="true"></div>

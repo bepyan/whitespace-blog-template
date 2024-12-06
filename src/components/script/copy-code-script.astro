@@ -1,5 +1,5 @@
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  function initCopyCode() {
     // @see plugins/transformer-fragment.ts
     const codeBlockList = document.querySelectorAll(
       '.mdx [data-code-fragment]',
@@ -35,5 +35,8 @@
         }, 2000);
       });
     });
-  });
+  }
+
+  document.addEventListener('DOMContentLoaded', initCopyCode);
+  document.addEventListener('astro:after-swap', initCopyCode);
 </script>

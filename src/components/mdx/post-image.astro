@@ -45,7 +45,7 @@ const {
 </figure>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  function initImageLoad() {
     const imgList = document.querySelectorAll('.mdx figure img');
 
     imgList.forEach((img) => {
@@ -53,7 +53,9 @@ const {
         img.classList.add('loaded');
       });
     });
-  });
+  }
+  document.addEventListener('DOMContentLoaded', initImageLoad);
+  document.addEventListener('astro:after-swap', initImageLoad);
 </script>
 
 <style>

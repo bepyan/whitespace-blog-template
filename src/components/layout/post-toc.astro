@@ -79,4 +79,5 @@ const { toc } = Astro.props;
   }
 
   document.addEventListener('DOMContentLoaded', initTocScroll);
+  document.addEventListener('astro:after-swap', initTocScroll);
 </script>

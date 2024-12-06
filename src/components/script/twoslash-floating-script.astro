@@ -19,7 +19,7 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  function initTwoslash() {
     let cleanup = null;
 
     const twoslashElements = document.querySelectorAll(
@@ -44,5 +44,8 @@
         }
       });
     });
-  });
+  }
+
+  document.addEventListener('DOMContentLoaded', initTwoslash);
+  document.addEventListener('astro:after-swap', initTwoslash);
 </script>

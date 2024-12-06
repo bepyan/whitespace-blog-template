@@ -4,6 +4,7 @@ import { cn } from '~/lib/utils';
 
 <button
   data-theme-toggle
+  transition:persist
   class={cn(
     'inline-block rounded-md p-1 transition hover:bg-gray-soft active:scale-95',
     Astro.props.class,
@@ -40,7 +41,10 @@ import { cn } from '~/lib/utils';
     document.documentElement.classList.add(nextTheme);
   }
 
-  document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
-    button.addEventListener('click', onToggleTheme);
-  });
+  function initClickListener() {
+    document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+      button.addEventListener('click', onToggleTheme);
+    });
+  }
+  document.addEventListener('DOMContentLoaded', initClickListener);
 </script>
