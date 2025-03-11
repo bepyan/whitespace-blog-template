@@ -28,7 +28,7 @@ import { cn } from '~/lib/utils';
 
   const themeList = Object.keys(THEME_MAP);
 
-  function onToggleTheme() {
+  function switchTheme() {
     const currentThemeIndex = themeList.findIndex((c) =>
       document.documentElement.classList.contains(c),
     );
@@ -39,6 +39,11 @@ import { cn } from '~/lib/utils';
     const nextTheme = themeList[(currentThemeIndex + 1) % themeList.length];
     localStorage.setItem(STORAGE_THEME_KEY, nextTheme);
     document.documentElement.classList.add(nextTheme);
+  }
+
+  function onToggleTheme() {
+    if (!document.startViewTransition) switchTheme();
+    document.startViewTransition(switchTheme);
   }
 
   function initClickListener() {
