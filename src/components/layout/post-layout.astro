@@ -30,7 +30,12 @@ const toc = getTableOfContents(post.body);
 const { Content, remarkPluginFrontmatter } = await post.render();
 ---
 
-<BaseLayout>
+<BaseLayout
+  seo={{
+    title: post.data.title,
+    description: post.data.description,
+  }}
+>
   <PostHeader
     class="mb-10"
     title={post.data.title}
