@@ -1,7 +1,7 @@
 // @ts-check
 import mdx from '@astrojs/mdx';
+import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
 import {
   transformerMetaHighlight,
   transformerMetaWordHighlight,
@@ -11,6 +11,7 @@ import {
   transformerNotationHighlight,
 } from '@shikijs/transformers';
 import { transformerTwoslash } from '@shikijs/twoslash';
+import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
@@ -21,15 +22,15 @@ import { remarkReadingTime } from './plugins/remark-reading-time.mjs';
 import { transformerFragment } from './plugins/transformer-fragment';
 import { SITE } from './src/site.config';
 
-import react from '@astrojs/react';
-
 // https://astro.build/config
 export default defineConfig({
   site: SITE.domain,
   output: 'static',
+  vite: {
+    plugins: [tailwindcss()],
+  },
   integrations: [
     sitemap(),
-    tailwind(),
     react(),
     mdx({
       shikiConfig: {
