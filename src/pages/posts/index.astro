@@ -12,7 +12,7 @@ const tags = getTags(posts);
   <div class="group relative my-14 border-l pl-4">
     <div class="absolute -left-16 select-none">
       <a
-        class="-mx-1 rounded-md px-1 transition group-hover:bg-gray-soft"
+        class="group-hover:bg-gray-soft -mx-1 rounded-md px-1 transition"
         href="/tags"
       >
         Tags
@@ -23,7 +23,7 @@ const tags = getTags(posts);
         tags.map((tag) => (
           <div class="mx-1 inline-block">
             <a
-              class="link hover:opacity-100! group-hover:opacity-60"
+              class="link group-hover:opacity-60 hover:opacity-100!"
               href={`/tags/${tag}`}
             >
               {tag}

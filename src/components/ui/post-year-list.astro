@@ -24,7 +24,7 @@ const yearList = Object.entries(
       return (
         <div class="group/year relative">
           <div class="absolute -left-20 select-none">
-            <h2 class="-mx-1 rounded-md px-1 transition group-hover/year:bg-gray-soft group-hover/year:opacity-100! group-hover:opacity-40">
+            <h2 class="group-hover/year:bg-gray-soft -mx-1 rounded-md px-1 transition group-hover:opacity-40 group-hover/year:opacity-100!">
               {year}
             </h2>
           </div>
@@ -34,10 +34,10 @@ const yearList = Object.entries(
                 <li>
                   <a
                     href={`/posts/${post.slug}`}
-                    class="-mx-1 flex items-center gap-2 rounded-md px-1 transition hover:bg-gray-soft hover:opacity-100! group-hover:opacity-60"
+                    class="hover:bg-gray-soft -mx-1 flex items-center gap-2 rounded-md px-1 transition group-hover:opacity-60 hover:opacity-100!"
                   >
                     <span class="text-text-1">{post.data.title}</span>
-                    <span class="shrink-0 text-sm text-text-2">
+                    <span class="text-text-2 shrink-0 text-sm">
                       {format(new Date(post.data.date), 'MM. dd.')}
                     </span>
                   </a>
