@@ -1,5 +1,5 @@
 ---
-import { SITE } from '~/site.config';
+import { cfg } from '~/cfg';
 import type { SEO } from '~/lib/types';
 import ThemeHeadScript from '~/components/script/theme-head-script.astro';
 import BaseFont from '~/components/layout/base-font.astro';
@@ -11,11 +11,15 @@ export type Props = {
 const { seo = {} } = Astro.props;
 
 const title =
-  seo.title && SITE.titleTemplate
-    ? SITE.titleTemplate.replace('%s', seo.title)
-    : SITE.title;
-const description = seo.description ?? SITE.description;
-const ogImageURL = seo.ogImage ?? SITE.ogImage;
+  seo.title && cfg.titleTemplate
+    ? cfg.titleTemplate.replace('%s', seo.title)
+    : cfg.title;
+const description = seo.description ?? cfg.description;
+
+const ogImage = seo.ogImage ?? cfg.ogImage;
+const ogImageURL = ogImage?.startsWith('/')
+  ? new URL(ogImage, Astro.url).toString()
+  : ogImage;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -23,7 +27,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 {/* Global Metadata */}
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" href="/favicon.svg" />
+<link rel="icon" href={cfg.favicon} />
 <meta name="generator" content={Astro.generator} />
 
 {/* Canonical URL */}
@@ -53,7 +57,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <link
   rel="alternate"
   type="application/rss+xml"
-  title={SITE.title}
+  title={cfg.title}
   href="/rss.xml"
 />
 

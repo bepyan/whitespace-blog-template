@@ -1,12 +1,14 @@
 ---
 import '~/styles/global.css';
 import '~/styles/custom.css';
+
+import { ClientRouter } from 'astro:transitions';
+
+import { cfg } from '~/cfg';
 import BaseHead from '~/components/layout/base-head.astro';
 import BaseNav from '~/components/layout/base-nav.astro';
-import type { SEO } from '~/lib/types';
-import { SITE } from '~/site.config';
 import BaseFooter from '~/components/layout/base-footer.astro';
-import { ClientRouter } from 'astro:transitions';
+import type { SEO } from '~/lib/types';
 
 type Props = {
   seo?: SEO;
@@ -15,7 +17,7 @@ type Props = {
 const { seo, ...props } = Astro.props;
 ---
 
-<html lang={SITE.lang}>
+<html lang={cfg.lang}>
   <head>
     <BaseHead {seo} />
     <ClientRouter />

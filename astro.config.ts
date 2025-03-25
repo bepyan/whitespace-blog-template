@@ -19,11 +19,11 @@ import remarkBreaks from 'remark-breaks';
 
 import { remarkReadingTime } from './plugins/remark-reading-time.mjs';
 import { transformerFragment } from './plugins/transformer-fragment';
-import { SITE } from './src/site.config';
+import { cfg } from './src/cfg';
 
 // https://astro.build/config
 export default defineConfig({
-  site: SITE.domain,
+  site: cfg.domain,
   output: 'static',
   vite: {
     plugins: [tailwindcss()],
