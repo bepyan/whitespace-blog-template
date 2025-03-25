@@ -1,7 +1,38 @@
 ---
+import { cfg } from '~/cfg';
 import BaseLayout from '~/components/layout/base-layout.astro';
+import PostYearList from '~/components/ui/post-year-list.astro';
+import { getPostsCollection, getTags } from '~/lib/mdx/post';
+
+const posts = await getPostsCollection();
+const tags = getTags(posts);
 ---
 
 <BaseLayout>
-  <h1 class="font-display text-5xl font-bold">Landing Page</h1>
+  <h1 class="font-display text-5xl font-bold">{cfg.title}</h1>
+  <div class="group relative my-14 border-l pl-4">
+    <div class="absolute -left-16 select-none">
+      <a
+        class="group-hover:bg-gray-soft -mx-1 rounded-md px-1 transition"
+        href="/tags"
+      >
+        Tags
+      </a>
+    </div>
+    <div class="gap-2">
+      {
+        tags.map((tag) => (
+          <div class="mx-1 inline-block">
+            <a
+              class="link group-hover:opacity-60 hover:opacity-100!"
+              href={`/tags/${tag}`}
+            >
+              {tag}
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+  <PostYearList {posts} />
 </BaseLayout>
