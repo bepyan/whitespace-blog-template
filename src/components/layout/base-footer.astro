@@ -1,19 +1,23 @@
-<footer transition:persist class="text-text-2 flex items-center text-sm">
+---
+import { cfg } from '~/cfg';
+---
+
+<footer
+  transition:persist
+  class="text-text-2 tablet:flex-row tablet:items-center flex flex-col gap-1 text-sm"
+>
   <div>
-    Created with <a
+    <span>©</span>
+    <a class="link text-text-1" href="/" target="_blank">{cfg.author}</a>
+    <span>, Build with</span>
+    <a
       class="link external text-text-1"
       href="https://github.com/bepyan/whitespace-blog-template"
       target="_blank">whitespace-blog-template</a
     >
-    © 2024
   </div>
-  <nav class="ml-auto flex gap-2" aria-label="More on this site">
-    <a
-      class="link whitespace-nowrap"
-      href="https://github.com/bepyan/whitespace-blog-template"
-      target="_blank"
-    >
-      Source Code
-    </a>
+  <nav class="tablet:ml-auto flex gap-2" aria-label="More on this site">
+    <a class="link" href="/rss.xml" target="_blank">RSS</a>
+    <a class="link" href="/sitemap-index.xml" target="_blank">Sitemap</a>
   </nav>
 </footer>
