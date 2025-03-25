@@ -1,0 +1,27 @@
+---
+import { cfg } from '~/cfg';
+---
+
+{
+  cfg.analytics?.provider === 'google' && (
+    <Fragment
+      set:html={`
+        <script async src="https://www.googletagmanager.com/gtag/js?id=${cfg.analytics.tagId}"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag("js", new Date());
+          gtag("config", "${cfg.analytics.tagId}");
+        </script>
+      `}
+    />
+  )
+}
+
+{
+  cfg.analytics?.provider === 'umami' && (
+    <Fragment
+      set:html={`<script async src="${cfg.analytics.host ?? 'https://cloud.umami.is'}/script.js" data-website-id="${cfg.analytics.websiteId}"></script>`}
+    />
+  )
+}

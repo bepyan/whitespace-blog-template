@@ -3,6 +3,7 @@ import { cfg } from '~/cfg';
 import type { SEO } from '~/lib/types';
 import ThemeHeadScript from '~/components/script/theme-head-script.astro';
 import BaseFont from '~/components/layout/base-font.astro';
+import AnalyticsScript from '~/components/script/analytics-script.astro';
 
 export type Props = {
   seo?: SEO;
@@ -66,3 +67,4 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 {/* Script */}
 <ThemeHeadScript />
+<AnalyticsScript />
