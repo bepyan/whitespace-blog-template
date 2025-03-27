@@ -1,14 +1,17 @@
 ---
+import { cn } from '~/lib/utils';
+
 interface Props {
   tags: string[];
+  class?: string;
 }
 
-const { tags } = Astro.props;
+const { tags, class: className } = Astro.props;
 ---
 
 {
   tags.length > 0 && (
-    <div class="text-text-2 my-10">
+    <div class={cn('text-text-2', className)}>
       <span>Tags:</span>
       {tags.map((tag) => (
         <span class="ml-2 inline-block">

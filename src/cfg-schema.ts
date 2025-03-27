@@ -40,6 +40,20 @@ export const socialLinkSchema = z.union([
   }),
 ]);
 
+export const giscusSchema = z.object({
+  repo: z.string(),
+  repoId: z.string(),
+  category: z.string().default('Announcements'),
+  categoryId: z.string().default('DIC_kwDONQJYcc4Cog_Q'),
+  mapping: z.string().default('pathname'),
+  strict: z.boolean().default(false),
+  reactionsEnabled: z.boolean().default(true),
+  emitMetadata: z.boolean().default(false),
+  inputPosition: z.string().default('bottom'),
+  lang: z.string().default('en'),
+});
+export type GiscusSchema = z.infer<typeof giscusSchema>;
+
 export const siteConfigSchema = z.object({
   siteUrl: z.string().url(),
   title: z.string(),
@@ -55,6 +69,7 @@ export const siteConfigSchema = z.object({
     description: z.string(),
     links: z.array(socialLinkSchema),
   }),
+  giscus: giscusSchema.optional(),
 });
 
 export type SiteConfig = z.input<typeof siteConfigSchema>;

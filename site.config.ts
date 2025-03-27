@@ -38,6 +38,11 @@ const config: SiteConfig = {
       },
     ],
   },
+  // @see https://giscus.app/
+  giscus: {
+    repo: 'bepyan/whitespace-blog-template',
+    repoId: 'R_kgDONQJYcQ',
+  },
 };
 
 export default config;

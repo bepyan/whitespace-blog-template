@@ -3,6 +3,7 @@ import '@shikijs/twoslash/style-rich.css';
 import '~/styles/mdx.css';
 
 import type { CollectionEntry } from 'astro:content';
+import { cfg } from '~/cfg';
 import BaseLayout from '~/components/layout/base-layout.astro';
 import MediumZoomScript from '~/components/script/medium-zoom-script.astro';
 import TwoslashFloatingScript from '~/components/script/twoslash-floating-script.astro';
@@ -17,6 +18,7 @@ import PostRelated from '~/components/layout/post-related.astro';
 import PostTags from '~/components/layout/post-tags.astro';
 import PostShare from '~/components/layout/post-share.astro';
 import PostNav from '~/components/layout/post-nav.astro';
+import { GiscusSection } from '~/components/giscus';
 
 type Props = {
   post: CollectionEntry<'posts'>;
@@ -50,10 +52,11 @@ const { Content, remarkPluginFrontmatter } = await post.render();
   </article>
   <div class="flex flex-col">
     <PostShare {post} class="mb-14" />
-    <BaseBio class="my-5" />
-    <PostTags {tags} />
+    <BaseBio class="mt-5 mb-10" />
+    <PostTags {tags} class="mb-10" />
     <PostRelated {relatedPosts} />
-    <PostNav prevPost={prevPost} nextPost={nextPost} class="mt-10" />
+    <PostNav prevPost={prevPost} nextPost={nextPost} class="my-10" />
+    {cfg.giscus && <GiscusSection client:load giscus={cfg.giscus} />}
   </div>
   {/* asides */}
   <BaseLeftAside>

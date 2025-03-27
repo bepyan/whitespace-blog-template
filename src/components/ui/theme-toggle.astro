@@ -24,6 +24,7 @@ import { cn } from '~/lib/utils';
 </button>
 
 <script>
+  import { changeGiscusTheme } from '~/components/giscus';
   import { STORAGE_THEME_KEY, THEME_MAP } from '~/lib/theme';
 
   const themeList = Object.keys(THEME_MAP);
@@ -39,6 +40,7 @@ import { cn } from '~/lib/utils';
     const nextTheme = themeList[(currentThemeIndex + 1) % themeList.length];
     localStorage.setItem(STORAGE_THEME_KEY, nextTheme);
     document.documentElement.classList.add(nextTheme);
+    changeGiscusTheme(nextTheme);
   }
 
   function onToggleTheme() {
@@ -52,4 +54,5 @@ import { cn } from '~/lib/utils';
     });
   }
   document.addEventListener('DOMContentLoaded', initClickListener);
+  document.addEventListener('astro:page-load', initClickListener);
 </script>
