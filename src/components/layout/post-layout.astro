@@ -10,6 +10,7 @@ import CopyCodeScript from '~/components/script/copy-code-script.astro';
 import PostImage from '~/components/layout/post-image.astro';
 import { getTableOfContents } from '~/lib/mdx/toc';
 import BaseLeftAside from '~/components/layout/base-left-aside.astro';
+import BaseBio from '~/components/layout/base-bio.astro';
 import PostToc from '~/components/layout/post-toc.astro';
 import PostHeader from '~/components/layout/post-header.astro';
 import PostRelated from '~/components/layout/post-related.astro';
@@ -46,8 +47,9 @@ const { Content, remarkPluginFrontmatter } = await post.render();
     <Content components={{ img: PostImage }} />
     <hr />
   </article>
-  <div>
-    <PostShare {post} />
+  <div class="flex flex-col">
+    <PostShare {post} class="mb-14" />
+    <BaseBio class="my-5" />
     <PostTags {tags} />
     <PostRelated {relatedPosts} />
   </div>

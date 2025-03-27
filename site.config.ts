@@ -11,6 +11,33 @@ const config: SiteConfig = {
     provider: 'umami',
     websiteId: '3e44b81b-09f0-4eaf-8c30-aad1b17e7903',
   },
+  bio: {
+    name: 'your name',
+    avatar: '/avatar.avif',
+    description: 'your long description',
+    links: [
+      {
+        label: 'mail',
+        url: 'mailto:your-email@example.com',
+      },
+      {
+        label: 'github',
+        url: 'https://github.com/your-github-username',
+      },
+      {
+        label: 'linkedin',
+        url: 'https://www.linkedin.com/in/your-linkedin-username',
+      },
+      {
+        label: 'x',
+        url: 'https://twitter.com/your-twitter-username',
+      },
+      {
+        label: 'instagram',
+        url: 'https://www.instagram.com/your-instagram-username',
+      },
+    ],
+  },
 };
 
 export default config;

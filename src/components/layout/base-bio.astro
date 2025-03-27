@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets';
+import { cfg } from '~/cfg';
+import {
+  BlueskyIcon,
+  EmailIcon,
+  GithubIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  XformerlyTwitterIcon,
+} from '~/components/ui/icons';
+import { cn } from '~/lib/utils';
+
+const {
+  bio: { avatar, name, description, links },
+} = cfg;
+---
+
+<div class={cn('flex gap-2', Astro.props.class)}>
+  {
+    avatar && (
+      <div class="h-14 w-14 flex-shrink-0">
+        <Image
+          src={avatar}
+          alt="프로필 이미지"
+          width={192}
+          height={192}
+          class="pointer-events-none h-full w-full rounded-full border-4 object-cover select-none"
+        />
+      </div>
+    )
+  }
+  <div>
+    <div class="mb-1 pl-1.5 leading-tight">
+      <p class="font-bold">{name}</p>
+      <p class="text-text-2 max-w-sm text-sm">{description}</p>
+    </div>
+    <div class="flex text-xs">
+      {
+        links.map((link) => (
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-text-2 hover:bg-gray-soft hover:text-text-1 rounded-md p-1.5 transition"
+            aria-label={link.label}
+          >
+            {link.label === 'mail' && <EmailIcon />}
+            {link.label === 'github' && <GithubIcon />}
+            {link.label === 'x' && <XformerlyTwitterIcon />}
+            {link.label === 'linkedin' && <LinkedInIcon />}
+            {link.label === 'instagram' && <InstagramIcon />}
+            {link.label === 'bluesky' && <BlueskyIcon />}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</div>

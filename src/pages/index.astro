@@ -1,6 +1,7 @@
 ---
 import { cfg } from '~/cfg';
 import BaseLayout from '~/components/layout/base-layout.astro';
+import BaseBio from '~/components/layout/base-bio.astro';
 import PostYearList from '~/components/ui/post-year-list.astro';
 import { getPostsCollection, getTags } from '~/lib/mdx/post';
 
@@ -10,6 +11,7 @@ const tags = getTags(posts);
 
 <BaseLayout>
   <h1 class="font-display text-5xl font-bold">{cfg.title}</h1>
+  <BaseBio class="my-14" />
   <div class="group relative my-14 border-l pl-4">
     <div class="absolute -left-16 select-none">
       <a

@@ -13,6 +13,33 @@ export const analyticsSchema = z.union([
   }),
 ]);
 
+export const socialLinkSchema = z.union([
+  z.object({
+    label: z.literal('mail'),
+    url: z.string(),
+  }),
+  z.object({
+    label: z.literal('github'),
+    url: z.string().url(),
+  }),
+  z.object({
+    label: z.literal('linkedin'),
+    url: z.string().url(),
+  }),
+  z.object({
+    label: z.literal('x'),
+    url: z.string().url(),
+  }),
+  z.object({
+    label: z.literal('instagram'),
+    url: z.string().url(),
+  }),
+  z.object({
+    label: z.literal('bluesky'),
+    url: z.string().url(),
+  }),
+]);
+
 export const siteConfigSchema = z.object({
   siteUrl: z.string().url(),
   title: z.string(),
@@ -22,6 +49,12 @@ export const siteConfigSchema = z.object({
   ogImage: z.string().optional(),
   lang: z.string().default('en'),
   analytics: analyticsSchema,
+  bio: z.object({
+    name: z.string(),
+    avatar: z.string().optional(),
+    description: z.string(),
+    links: z.array(socialLinkSchema),
+  }),
 });
 
 export type SiteConfig = z.input<typeof siteConfigSchema>;
