@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { cn } from '~/lib/utils';
+
+interface Props {
+  prevPost?: CollectionEntry<'posts'>;
+  nextPost?: CollectionEntry<'posts'>;
+  class?: string;
+}
+
+const { prevPost, nextPost, class: className } = Astro.props;
+---
+
+<section class={cn('flex items-stretch justify-between gap-1', className)}>
+  {
+    prevPost && (
+      <div class="text-left">
+        <p class="text-text-2">Previous</p>
+        <a class="link" href={`/posts/${prevPost.slug}`}>
+          {prevPost.data.title}
+        </a>
+      </div>
+    )
+  }
+  {
+    nextPost && (
+      <div class="text-right">
+        <p class="text-text-2">Next</p>
+        <a class="link" href={`/posts/${nextPost.slug}`}>
+          {nextPost.data.title}
+        </a>
+      </div>
+    )
+  }
+</section>

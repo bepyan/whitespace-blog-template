@@ -16,6 +16,7 @@ import PostHeader from '~/components/layout/post-header.astro';
 import PostRelated from '~/components/layout/post-related.astro';
 import PostTags from '~/components/layout/post-tags.astro';
 import PostShare from '~/components/layout/post-share.astro';
+import PostNav from '~/components/layout/post-nav.astro';
 
 type Props = {
   post: CollectionEntry<'posts'>;
@@ -24,7 +25,7 @@ type Props = {
   relatedPosts: CollectionEntry<'posts'>[];
 };
 
-const { post, relatedPosts } = Astro.props;
+const { post, relatedPosts, prevPost, nextPost } = Astro.props;
 const tags = post.data.tags ?? [];
 const toc = getTableOfContents(post.body);
 
@@ -52,6 +53,7 @@ const { Content, remarkPluginFrontmatter } = await post.render();
     <BaseBio class="my-5" />
     <PostTags {tags} />
     <PostRelated {relatedPosts} />
+    <PostNav prevPost={prevPost} nextPost={nextPost} class="mt-10" />
   </div>
   {/* asides */}
   <BaseLeftAside>
