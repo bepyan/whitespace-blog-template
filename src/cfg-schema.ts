@@ -14,11 +14,10 @@ export const analyticsSchema = z.union([
 ]);
 
 export const siteConfigSchema = z.object({
-  domain: z.string().url(),
+  siteUrl: z.string().url(),
   title: z.string(),
   titleTemplate: z.string().optional(),
   description: z.string(),
-  author: z.string(),
   favicon: z.string(),
   ogImage: z.string().optional(),
   lang: z.string().default('en'),

@@ -1,11 +1,10 @@
 import type { SiteConfig } from '~/cfg-schema';
 
 const config: SiteConfig = {
-  domain: 'https://whitespace-blog-template.netlify.app',
+  siteUrl: 'https://whitespace-blog-template.netlify.app',
   title: 'whitespace blog',
   titleTemplate: '%s',
   description: 'minimalism coding blog build with astro',
-  author: 'bepyan',
   favicon: '/favicon.svg',
   ogImage: '/og.avif',
   analytics: {

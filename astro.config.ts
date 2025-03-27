@@ -23,7 +23,7 @@ import { cfg } from './src/cfg';
 
 // https://astro.build/config
 export default defineConfig({
-  site: cfg.domain,
+  site: cfg.siteUrl,
   output: 'static',
   vite: {
     plugins: [tailwindcss()],

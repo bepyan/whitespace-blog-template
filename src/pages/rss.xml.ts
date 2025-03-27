@@ -10,7 +10,7 @@ export const GET: APIRoute = async () => {
     title: cfg.title,
     description: cfg.description,
     // https://docs.astro.build/en/reference/api-reference/#contextsite
-    site: cfg.domain,
+    site: cfg.siteUrl,
     items: postList.map((post) => {
       return {
         title: post.data.title,
