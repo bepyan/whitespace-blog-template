@@ -15,7 +15,7 @@ const { tags, class: className } = Astro.props;
       <span>Tags:</span>
       {tags.map((tag) => (
         <span class="ml-2 inline-block">
-          <a class="link text-text-1" href={`/tags/${tag}`}>
+          <a class="link text-text-1" href={`/?tag=${tag}`}>
             {tag}
           </a>
         </span>
