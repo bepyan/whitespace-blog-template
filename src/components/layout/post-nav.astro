@@ -11,25 +11,29 @@ interface Props {
 const { prevPost, nextPost, class: className } = Astro.props;
 ---
 
-<section class={cn('flex items-stretch justify-between gap-1', className)}>
-  {
-    prevPost && (
-      <div class="text-left">
-        <p class="text-text-2">Previous</p>
-        <a class="link" href={`/posts/${prevPost.slug}`}>
-          {prevPost.data.title}
-        </a>
-      </div>
-    )
-  }
-  {
-    nextPost && (
-      <div class="text-right">
-        <p class="text-text-2">Next</p>
-        <a class="link" href={`/posts/${nextPost.slug}`}>
-          {nextPost.data.title}
-        </a>
-      </div>
-    )
-  }
+<section class={cn('flex items-stretch justify-between gap-2', className)}>
+  <div class="text-left">
+    {
+      prevPost && (
+        <>
+          <p class="text-text-2">Previous</p>
+          <a class="link" href={`/posts/${prevPost.slug}`}>
+            {prevPost.data.title}
+          </a>
+        </>
+      )
+    }
+  </div>
+  <div class="text-right">
+    {
+      nextPost && (
+        <>
+          <p class="text-text-2">Next</p>
+          <a class="link" href={`/posts/${nextPost.slug}`}>
+            {nextPost.data.title}
+          </a>
+        </>
+      )
+    }
+  </div>
 </section>
