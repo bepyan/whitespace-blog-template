@@ -1,7 +1,7 @@
 import { z } from 'astro/zod';
 
 export const analyticsSchema = z.union([
-  z.null(),
+  z.undefined(),
   z.object({
     provider: z.literal('google'),
     tagId: z.string(),

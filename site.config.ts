@@ -7,10 +7,10 @@ const config: SiteConfig = {
   description: 'minimalism coding blog build with astro',
   favicon: '/favicon.svg',
   ogImage: '/og.avif',
-  analytics: {
-    provider: 'umami',
-    websiteId: '3e44b81b-09f0-4eaf-8c30-aad1b17e7903',
-  },
+  // analytics: {
+  //   provider: 'umami',
+  //   websiteId: 'your-umami-website-id',
+  // },
   bio: {
     name: 'your name',
     avatar: '/avatar.avif',
@@ -41,6 +41,7 @@ const config: SiteConfig = {
   // @see https://giscus.app/
   giscus: {
     repo: 'bepyan/whitespace-blog-template',
+    // change this to your repo id
     repoId: 'R_kgDONQJYcQ',
   },
 };
